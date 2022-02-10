@@ -20,6 +20,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
 	m_exitGame{false} //when true game will exit
 {
+	
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
 }
