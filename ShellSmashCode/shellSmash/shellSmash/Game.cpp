@@ -23,6 +23,7 @@ Game::Game() :
 	
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
+	setupshell();//shell one circle 
 }
 
 /// <summary>
@@ -104,6 +105,7 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+	shellMovment();
 }
 
 /// <summary>
@@ -111,9 +113,8 @@ void Game::update(sf::Time t_deltaTime)
 /// </summary>
 void Game::render()
 {
-	m_window.clear(sf::Color::White);
-	m_window.draw(m_welcomeMessage);
-	m_window.draw(m_logoSprite);
+	m_window.clear(sf::Color::Blue);
+	m_window.draw(m_greenShell);
 	m_window.display();
 }
 
@@ -149,4 +150,18 @@ void Game::setupSprite()
 	}
 	m_logoSprite.setTexture(m_logoTexture);
 	m_logoSprite.setPosition(300.0f, 180.0f);
+}
+
+void Game::setupshell()
+{
+	m_greenShell.setPosition(m_greenLocation);
+	m_greenShell.setFillColor(sf::Color::Green);
+}
+
+void Game::shellMovment()
+{
+	sf::Vector2f move{ 0,0 };
+	move += m_greenVelocity;
+	m_greenLocation += move;
+	m_greenShell.setPosition(m_greenLocation);
 }
