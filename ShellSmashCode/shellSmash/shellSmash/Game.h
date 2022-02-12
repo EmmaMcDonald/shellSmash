@@ -21,6 +21,8 @@ public:
 	/// main method for game
 	/// </summary>
 	void run();
+	const int HEIGHT = 800;
+	const int WIDTH = 1000;
 
 private:
 
@@ -34,6 +36,9 @@ private:
 
 	void setupshell();
 	void shellMovment();
+	void borders(sf::Vector2f &t_location);
+
+	
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
@@ -44,6 +49,7 @@ private:
 	sf::CircleShape m_greenShell{ 20 };
 	sf::Vector2f m_greenVelocity{ 4,4 };
 	sf::Vector2f m_greenLocation{ 300,200 };
+	sf::Vector2f& t_location;
 };
 
 #endif // !GAME_HPP
