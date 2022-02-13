@@ -16,15 +16,18 @@
 /// load and setup the text 
 /// load and setup thne image
 /// </summary>
-Game::Game() :
+Game::Game():
+ 
+
 	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
-	m_exitGame{false} //when true game will exit
-{
-	
+	m_exitGame{ false } //when true game will
+
+{   
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
 	setupshell();//shell one circle 
 	
+   
 }
 
 /// <summary>
@@ -107,6 +110,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 	shellMovment();
+	borders();
 }
 
 /// <summary>
@@ -117,6 +121,7 @@ void Game::render()
 	m_window.clear(sf::Color::Blue);
 	m_window.draw(m_greenShell);
 	m_window.display();
+	
 }
 
 /// <summary>
@@ -167,26 +172,31 @@ void Game::shellMovment()
 	m_greenShell.setPosition(m_greenLocation);
 }
 
-void Game::borders(sf::Vector2f& t_location)
+void Game::borders( )//creating borders 
 {
 	{
 		float screenWidth = static_cast<float>(WIDTH); // were ints, use floats for checks
-		float screenHeight = static_cast<float>(HEIGHT);
-		if (t_location.x < 0.0f)
+		float screenHeight = static_cast<float>(HEIGHT);// height from game.h
+		if (m_greenLocation.x < 0.0f)
 		{
-			t_location.x = 0.0f;
+			m_greenLocation.x = 0.0f;
+			m_greenShell.setPosition(m_greenLocation);
 		}
-		if (t_location.x > screenWidth)
+		if (m_greenLocation.x > WIDTH)
 		{
-			t_location.x = screenWidth;
+			m_greenLocation.x = WIDTH;
+			m_greenShell.setPosition(m_greenLocation);
 		}
-		if (t_location.y < 0.0f)
+		if (m_greenLocation.y < 0.0f)
 		{
-			t_location.y = 0.0f;
+			m_greenLocation.y = 0.0f;
+			m_greenShell.setPosition(m_greenLocation);
+
 		}
-		if (t_location.y > screenHeight)
+		if (m_greenLocation.y > HEIGHT)
 		{
-			t_location.y = screenHeight;
+			m_greenLocation.y = HEIGHT;
+			m_greenShell.setPosition(m_greenLocation);
 		}
 	}
 }

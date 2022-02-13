@@ -21,8 +21,8 @@ public:
 	/// main method for game
 	/// </summary>
 	void run();
-	const int HEIGHT = 800;
-	const int WIDTH = 1000;
+	const int HEIGHT = 550;
+	const int WIDTH = 750;
 
 private:
 
@@ -36,7 +36,7 @@ private:
 
 	void setupshell();
 	void shellMovment();
-	void borders(sf::Vector2f &t_location);
+	void borders();
 
 	
 
@@ -49,7 +49,7 @@ private:
 	sf::CircleShape m_greenShell{ 20 };
 	sf::Vector2f m_greenVelocity{ 4,4 };
 	sf::Vector2f m_greenLocation{ 300,200 };
-	sf::Vector2f& t_location;
+	sf::Vector2f t_location;
 };
 
 #endif // !GAME_HPP
